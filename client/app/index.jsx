@@ -7,8 +7,14 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      items: [{id: 1, text: 'hello world'}]
+      items: []
     }
+  }
+  updateItems() {
+    $.get('/items', (items) => this.setState({items: items.results}));
+  }
+  componentDidMount() {
+    this.updateItems();
   }
   submitHandler(e) {
     console.log('submitted:', e);

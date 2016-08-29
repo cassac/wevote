@@ -1,14 +1,32 @@
-var models = require('../models');
+var Item = require('../models');
+var fs = require('fs');
+var multiparty = require('multiparty');
+var sequelize = require('../db/database.js');
+
 
 module.exports = {
   items: {
     get: function(req, res) {
-      console.log('items get');
-      res.json('ok from items get');
+      Item.findAll()
+        .then(function(results) {
+          res.json({results: results});
+        })
+        .catch(function(err) {
+          res.json({results: err});
+        })
     },
     post: function(req, res) {
-      console.log('items post');
-      res.json('ok from items post');
+      Item.create({
+        tag: 'tag',
+        text: 'text',
+        filepath: 'filepath'
+      })
+      .then(function(results) {
+        res.json({results: results})
+      })
+      .catch(function(err) {
+        res.json({results: err})
+      })
     }
   }
 }
