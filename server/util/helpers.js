@@ -1,8 +1,6 @@
 var util = {
   tagGenerator: function(text) {
-    var split = text.toUpperCase().split(' ');
-    var hashtag = split[0].concat(split[1]).substring(0, 8);
-    return hashtag;
+    return text.split(' ').join('').substring(0, 8).toUpperCase();
   },
   findHashtag: function(body) {
     var result = body.match(/#([a-zA-Z0-9]+)/);
