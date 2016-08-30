@@ -16,13 +16,11 @@ class App extends Component {
   }
   updateItems() {
     $.get('/items', (items) => {
-      console.log('items:', items)
       this.setState({items: items.results})
     });
   }
   updateVotes() {
     $.get('/votes', (votes) => {
-      console.log('votes:', votes)
       this.setState({votes: votes.results})
     });
   }  
