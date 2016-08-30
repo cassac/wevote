@@ -22,6 +22,6 @@ var Vote = sequelize.define('vote', {
   }
 });
 
-Vote.sync();
+// Vote.sync({force:true}); // drops table data
 
 module.exports = Vote;
