@@ -19,7 +19,6 @@ module.exports = {
     }),
     post: ((req, res) => {
       const vote = req.body;
-      console.log('VOTE:', vote)
       Vote.create({
         FromCountry: vote.FromCountry,
         FromZip: vote.FromZip,
@@ -28,9 +27,30 @@ module.exports = {
         Body: vote.Body,
         From: vote.From
       })
-      .then(() => {
+      .then((vote) => {
         res.set('Content-Type', 'text/xml');
         res.send(xml({Response: [{ Message: 'Thanks for voting =)'}]}));
+        return vote;
+      })
+      .then((vote) => {
+        const body = vote.dataValues.Body;
+        const hashtag = util.findHashtag(body);
+        return new Promise((resolve, reject) => {
+          if (!hashtag) {
+            reject('No hashtag');
+          }
+          Item.findOne({
+            tag: hashtag
+          })
+          .then((item) => {
+            item.update({
+              votes: item.votes + 1
+            })
+          })
+          .catch((err) => {
+            reject('Problem updating item vote count', err);
+          })
+        })
       })
       .catch((err) => {
         console.log('VoteController error:', err);
