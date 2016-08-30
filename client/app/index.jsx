@@ -3,26 +3,36 @@ import ReactDOM from 'react-dom';
 import ItemList from './components/ItemList.jsx';
 import ItemEntryCreate from './components/ItemEntryCreate.jsx';
 import NavBar from './components/NavBar.jsx';
+import Modal from './components/Modal.jsx';
 
 class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
       items: [],
-      votes: []
+      votes: [],
+      displayModal: false
     }
   }
   updateItems() {
     $.get('/items', (items) => {
-      console.log(items)
+      console.log('items:', items)
       this.setState({items: items.results})
     });
   }
+  updateVotes() {
+    $.get('/votes', (votes) => {
+      console.log('votes:', votes)
+      this.setState({votes: votes.results})
+    });
+  }  
   componentDidMount() {
     this.updateItems();
-    // setInterval(function() {
-    //   this.updateItems();
-    // }.bind(this), 3000)
+    this.updateVotes();
+    setInterval(function() {
+      this.updateItems();
+      this.updateVotes();
+    }.bind(this), 1000)
   }
   submitHandler(e) {
     let context = this;
@@ -41,12 +51,18 @@ class App extends Component {
     .fail((err) => console.log('err', err))
   }
   clickHandler(e) {
-    console.log('clicked')
+    let context = this;
+    context.setState({
+      displayModal: !(this.state.displayModal)
+    })
+    $('#modal1').openModal();
+    console.log('displayModal:', this.state.displayModal);
   }
   render() {
     return (
       <div>
-        <NavBar clickHandler={this.clickHandler} />
+        <NavBar clickHandler={this.clickHandler.bind(this)} />
+        <Modal votes={this.state.votes} />
         <div className='container'>
           <ItemEntryCreate submitHandler={this.submitHandler.bind(this)}/>
           <ItemList items={this.state.items} />
