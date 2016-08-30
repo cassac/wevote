@@ -25,7 +25,7 @@ module.exports = {
         const form = new multiparty.Form();
         form.parse(req, (err, fields, files) => {
           const text = fields.text[0];
-          if (!files.image.length) { // files.image is null if no files
+          if (files.image.length > 0) { // files.image is null if no files
             const temppath = files.image[0].path;
             const filename = files.image[0].originalFilename;
             const filepath = 'static/uploads/' + filename;
