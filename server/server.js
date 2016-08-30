@@ -8,6 +8,7 @@ module.exports.app = app;
 app.use('/', router);
 
 app.use(express.static('client'));
+app.use('/static', express.static('server/uploads'));
 
 var port = 8080;
 

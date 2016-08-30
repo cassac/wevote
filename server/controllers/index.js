@@ -6,27 +6,45 @@ var sequelize = require('../db/database.js');
 
 module.exports = {
   items: {
-    get: function(req, res) {
+    get: ((req, res) => {
       Item.findAll()
-        .then(function(results) {
-          res.json({results: results});
+        .then((results) => {
+          res.json({results: results})
         })
-        .catch(function(err) {
-          res.json({results: err});
+        .catch((err) => (
+          res.json({results: err})
+        ))
+    }),
+    post: ((req, res) => {
+      return new Promise((resolve, reject) => {
+        const form = new multiparty.Form();
+        form.parse(req, (err, fields, files) => {
+          const text = fields.text[0];
+          const filepath = files.image[0].path;
+          const filename = files.image[0].originalFilename;
+          fs.readFile(filepath, ((err, data) => {
+            if (err) {
+              reject(err);
+            }
+            console.log('reading file...')
+            resolve()
+          }))
         })
-    },
-    post: function(req, res) {
-      Item.create({
-        tag: 'tag',
-        text: 'text',
-        filepath: 'filepath'
       })
       .then(function(results) {
+        Item.create({
+          tag: 'tag',
+          text: 'text',
+          filepath: 'filepath'
+        })
+        .then(((results) => {
+          res.json({results: results})
+        }))
+        .catch(((err) => {
+          res.json({results: err})
+        }))
         res.json({results: results})
       })
-      .catch(function(err) {
-        res.json({results: err})
-      })
-    }
+    })
   }
 }
