@@ -18,5 +18,6 @@ var Item = sequelize.define('item', {
 });
 
 // Item.sync({force: true}); // drops table data
+Item.sync(); // creates tables
 
 module.exports = Item;
