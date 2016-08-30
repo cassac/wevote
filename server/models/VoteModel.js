@@ -2,15 +2,26 @@ var Sequelize = require('sequelize');
 var sequelize = require('../db/database.js');
 
 var Vote = sequelize.define('vote', {
-  from: {
+  FromCountry: {
     type: Sequelize.STRING
   },
-  body: {
+  FromZip: {
     type: Sequelize.STRING
   },
-  tag: {
+  FromState: {
+    type: Sequelize.STRING
+  },
+  FromCity: {
+    type: Sequelize.STRING
+  },
+  Body: {
+    type: Sequelize.STRING
+  },
+  From: {
     type: Sequelize.STRING
   }
 });
+
+Vote.sync();
 
 module.exports = Vote;
