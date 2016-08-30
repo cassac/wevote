@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import ItemList from './components/ItemList.jsx';
 import ItemEntryCreate from './components/ItemEntryCreate.jsx';
+import NavBar from './components/NavBar.jsx';
 
 class App extends Component {
   constructor(props) {
@@ -40,9 +41,12 @@ class App extends Component {
   }
   render() {
     return (
-      <div className='container'>
-        <ItemEntryCreate submitHandler={this.submitHandler.bind(this)}/>
-        <ItemList items={this.state.items} />
+      <div>
+        <NavBar />
+        <div className='container'>
+          <ItemEntryCreate submitHandler={this.submitHandler.bind(this)}/>
+          <ItemList items={this.state.items} />
+        </div>
       </div>
     )
   }
