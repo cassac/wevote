@@ -8,7 +8,7 @@ let ItemEntryCreate = (props) => (
             <input name='text' type='text' placeholder='Topic...' required/>
           </div>
           <div className="file-field input-field col s4">
-            <div className="btn">
+            <div className="btn white black-text">
               <span>File</span>
                 <input name='image' type='file' />
             </div>
@@ -17,7 +17,7 @@ let ItemEntryCreate = (props) => (
             </div>
           </div>
           <div className='input-field col s2'>
-            <input className="btn waves-effect waves-light" type='submit' />
+            <input className="btn waves-effect waves-light white black-text" type='submit' />
           </div>  
         </div>
     </form>  

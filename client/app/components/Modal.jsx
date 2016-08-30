@@ -9,8 +9,8 @@ let Modal = ({votes}) => (
         <thead>
           <tr>
               <th data-field="number">#</th>
-              <th data-field="city">City</th>
-              <th data-field="state">State</th>
+              <th data-field="city">City, State</th>
+              <th data-field="state">Zip</th>
               <th data-field="vote">Vote</th>              
           </tr>
         </thead>
@@ -23,7 +23,7 @@ let Modal = ({votes}) => (
       </table>
     </div>
     <div className="modal-footer">
-      <a href="#!" className=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+      <a href="#!" className="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
     </div>
   </div>
 ) 
