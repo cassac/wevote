@@ -8,7 +8,6 @@ var xml = require('xml');
 module.exports = {
   votes: {
     get: ((req, res) => {
-      console.log('get request vote controller')
       Vote.findAll({
         order: [
           ['id', 'DESC']
