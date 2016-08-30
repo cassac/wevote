@@ -8,13 +8,17 @@ var util = require('../util/helpers.js');
 module.exports = {
   items: {
     get: ((req, res) => {
-      Item.findAll()
-        .then((results) => {
-          res.json({results: results})
-        })
-        .catch((err) => (
-          res.json({results: err})
-        ))
+      Item.findAll({
+        order: [
+          ['votes', 'DESC']
+        ]        
+      })
+      .then((results) => {
+        res.json({results: results})
+      })
+      .catch((err) => (
+        res.json({results: err})
+      ))
     }),
     post: ((req, res) => {
       return new Promise((resolve, reject) => {
