@@ -18,6 +18,9 @@ class App extends Component {
   }
   componentDidMount() {
     this.updateItems();
+    setInterval(function() {
+      this.updateItems();
+    }.bind(this), 1500)
   }
   submitHandler(e) {
     let context = this;
