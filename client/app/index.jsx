@@ -56,7 +56,6 @@ class App extends Component {
       displayModal: !(this.state.displayModal)
     })
     $('#modal1').openModal();
-    console.log('displayModal:', this.state.displayModal);
   }
   render() {
     return (

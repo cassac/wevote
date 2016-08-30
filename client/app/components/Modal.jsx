@@ -4,7 +4,7 @@ import ModalTableRow from './ModalTableRow.jsx';
 let Modal = ({votes}) => (
   <div id="modal1" className="modal">
     <div className="modal-content">
-      <h5>Modal Header</h5>
+      <h5>Voter Details</h5>
       <table>
         <thead>
           <tr>
