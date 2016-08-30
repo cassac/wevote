@@ -11,7 +11,10 @@ class App extends Component {
     }
   }
   updateItems() {
-    $.get('/items', (items) => this.setState({items: items.results}));
+    $.get('/items', (items) => {
+      console.log(items)
+      this.setState({items: items.results})
+    });
   }
   componentDidMount() {
     this.updateItems();

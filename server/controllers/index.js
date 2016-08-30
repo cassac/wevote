@@ -3,7 +3,7 @@ var fs = require('fs');
 var path = require('path');
 var multiparty = require('multiparty');
 var sequelize = require('../db/database.js');
-
+var util = require('../util/helpers.js')
 
 module.exports = {
   items: {
@@ -23,7 +23,7 @@ module.exports = {
           const text = fields.text[0];
           const temppath = files.image[0].path;
           const filename = files.image[0].originalFilename;
-          const filepath = 'static/' + filename;
+          const filepath = 'static/uploads/' + filename;
           fs.readFile(temppath, ((err, data) => {
             if (err) {
               reject(err);
@@ -32,16 +32,23 @@ module.exports = {
               if (err) {
                 reject(err);
               }
-              resolve(filepath);
+              resolve([text, filepath]);
             }))
           }))
         })
       })
+      .then((results) => {
+        console.log('before utils', util.tagGenerator)
+        const tag = util.tagGenerator(results[0]);
+        console.log('tags!!:', tag)
+        results.push(tag)
+        return results;
+      })
       .then(function(results) {
         Item.create({
-          tag: 'tag',
-          text: 'text',
-          filepath: 'filepath'
+          tag: results[2],
+          text: results[0],
+          filepath: results[1]
         })
         .then(((results) => {
           res.json({results: results})
