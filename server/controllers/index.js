@@ -1,5 +1,6 @@
 var Item = require('../models');
 var fs = require('fs');
+var path = require('path');
 var multiparty = require('multiparty');
 var sequelize = require('../db/database.js');
 
@@ -20,14 +21,19 @@ module.exports = {
         const form = new multiparty.Form();
         form.parse(req, (err, fields, files) => {
           const text = fields.text[0];
-          const filepath = files.image[0].path;
+          const temppath = files.image[0].path;
           const filename = files.image[0].originalFilename;
-          fs.readFile(filepath, ((err, data) => {
+          const filepath = 'static/' + filename;
+          fs.readFile(temppath, ((err, data) => {
             if (err) {
               reject(err);
             }
-            console.log('reading file...')
-            resolve()
+            fs.writeFile(filepath, data, ((err, data) => {
+              if (err) {
+                reject(err);
+              }
+              resolve(filepath);
+            }))
           }))
         })
       })
@@ -43,7 +49,6 @@ module.exports = {
         .catch(((err) => {
           res.json({results: err})
         }))
-        res.json({results: results})
       })
     })
   }
