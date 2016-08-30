@@ -17,4 +17,6 @@ var Item = sequelize.define('item', {
   }
 });
 
+Item.sync();
+
 module.exports = Item;
