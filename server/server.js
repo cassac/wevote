@@ -10,7 +10,7 @@ app.use('/', router);
 app.use(express.static('client'));
 app.use('/static/uploads', express.static('static/uploads'));
 
-var port = 8080;
+var port = process.env.PORT || 8080;
 
 app.listen(port, function() {
   console.log('WeVote is running on port:', port);
