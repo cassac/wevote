@@ -25,6 +25,7 @@
     "react-dom": "^15.3.1",
     "react-router": "^2.7.0",
     "sequelize": "^3.24.1",
-    "webpack": "^1.13.2"
+    "webpack": "^1.13.2",
+    "xml": "^1.0.1"
   }
 }
