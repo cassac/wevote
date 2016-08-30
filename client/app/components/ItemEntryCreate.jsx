@@ -1,13 +1,25 @@
 import React from 'react';
 
 let ItemEntryCreate = (props) => (
-  <div>
-    <form onSubmit={props.submitHandler}>
-      <input name='text' type='text' placeholder='Write Something' required/>
-      <br />
-      <input name='image' type='file' />
-      <br />
-      <input type='submit' />
+  <div className='row'>
+    <form className="col s12" onSubmit={props.submitHandler}>
+        <div className='row'>    
+          <div className='input-field col s6'>
+            <input name='text' type='text' placeholder='Topic...' required/>
+          </div>
+          <div className="file-field input-field col s4">
+            <div className="btn">
+              <span>File</span>
+                <input name='image' type='file' />
+            </div>
+            <div className="file-path-wrapper">
+              <input className="file-path validate" type='text' placeholder='Attach an image' />
+            </div>
+          </div>
+          <div className='input-field col s2'>
+            <input className="btn waves-effect waves-light" type='submit' />
+          </div>  
+        </div>
     </form>  
   </div>
 )

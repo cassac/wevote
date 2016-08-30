@@ -40,8 +40,7 @@ class App extends Component {
   }
   render() {
     return (
-      <div>
-        <div>Hello World</div>
+      <div className='container'>
         <ItemEntryCreate submitHandler={this.submitHandler.bind(this)}/>
         <ItemList items={this.state.items} />
       </div>
