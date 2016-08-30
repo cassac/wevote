@@ -9,13 +9,17 @@ module.exports = {
   votes: {
     get: ((req, res) => {
       console.log('get request vote controller')
-      Vote.findAll()
-        .then((votes) => {
-          res.json({results: votes});
-        })
-        .catch((err) => {
-          res.json({results: err})
-        })
+      Vote.findAll({
+        order: [
+          ['id', 'DESC']
+        ]   
+      })
+      .then((votes) => {
+        res.json({results: votes});
+      })
+      .catch((err) => {
+        res.json({results: err})
+      })
     }),
     post: ((req, res) => {
       const vote = req.body;
