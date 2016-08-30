@@ -8,7 +8,8 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      items: []
+      items: [],
+      votes: []
     }
   }
   updateItems() {
@@ -19,9 +20,9 @@ class App extends Component {
   }
   componentDidMount() {
     this.updateItems();
-    setInterval(function() {
-      this.updateItems();
-    }.bind(this), 1500)
+    // setInterval(function() {
+    //   this.updateItems();
+    // }.bind(this), 3000)
   }
   submitHandler(e) {
     let context = this;
@@ -39,10 +40,13 @@ class App extends Component {
     })
     .fail((err) => console.log('err', err))
   }
+  clickHandler(e) {
+    console.log('clicked')
+  }
   render() {
     return (
       <div>
-        <NavBar />
+        <NavBar clickHandler={this.clickHandler} />
         <div className='container'>
           <ItemEntryCreate submitHandler={this.submitHandler.bind(this)}/>
           <ItemList items={this.state.items} />
