@@ -3,9 +3,9 @@ import React from 'react';
 let ItemEntryCreate = (props) => (
   <div>
     <form onSubmit={props.submitHandler}>
-      <input type='text' placeholder='Write Something' />
+      <input name='text' type='text' placeholder='Write Something' />
       <br />
-      <input type='file' />
+      <input name='image' type='file' />
       <br />
       <input type='submit' />
     </form>  
