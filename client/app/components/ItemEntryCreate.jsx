@@ -5,7 +5,7 @@ let ItemEntryCreate = (props) => (
     <form className="col s12" onSubmit={props.submitHandler}>
         <div className='row'>    
           <div className='input-field col s6'>
-            <input name='text' type='text' placeholder='Topic...' required/>
+            <input name='text' type='text' placeholder='Title' required/>
           </div>
           <div className="file-field input-field col s4">
             <div className="btn white black-text">

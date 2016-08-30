@@ -11,9 +11,9 @@ let ItemEntry = ({item}) => (
         #{item.tag}<i className="material-icons right">more_vert</i>
       </span>
       <div>
-        <p>{item.votes}</p>
         <a href="#">{item.text}</a>
       </div>
+      <h1>{item.votes}</h1>
     </div>
     <div className="card-reveal">
       <span className="card-title grey-text text-darken-4">#{item.tag}<i className="material-icons right">close</i></span>

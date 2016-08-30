@@ -8,7 +8,7 @@ let NavBar= ({clickHandler}) => (
          <ul id="nav-mobile" className="left">
            <li>
             <a href="#" className="tooltipped" data-position="right" data-delay="50" 
-              data-tooltip="Send text to +18988989. Example: #HASHTAG I like voting!">
+              data-tooltip="Send text to (415) 766-9520. Example: #HASHTAG I like voting!">
               <i className="material-icons">textsms</i>
             </a>
         </li>
