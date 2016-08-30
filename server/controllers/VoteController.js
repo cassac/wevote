@@ -40,7 +40,9 @@ module.exports = {
             reject('No hashtag');
           }
           Item.findOne({
-            tag: hashtag
+            where: {
+              tag: hashtag
+            }
           })
           .then((item) => {
             item.update({
