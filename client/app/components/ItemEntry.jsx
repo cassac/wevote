@@ -1,7 +1,9 @@
 import React from 'react';
 
-let ItemEntry = (props) => (
-  <div>{props.item.text}</div>
+let ItemEntry = ({item}) => (
+  <div>
+      <span>#{item.tag} - {item.votes} - {item.text} - {item.filepath}</span> 
+  </div>
 ) 
 
 export default ItemEntry;

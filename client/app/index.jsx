@@ -20,7 +20,7 @@ class App extends Component {
     this.updateItems();
   }
   submitHandler(e) {
-    console.log('submitted:', e);
+    let context = this;
     e.preventDefault();
     $.ajax({
       'url': '/items',
@@ -29,7 +29,10 @@ class App extends Component {
       contentType: false,
       processData: false
     })
-    .done((res) => console.log('res', res))
+    .done((res) => {
+      context.updateItems();
+      $('form')[0].reset();
+    })
     .fail((err) => console.log('err', err))
   }
   render() {

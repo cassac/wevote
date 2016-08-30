@@ -10,6 +10,10 @@ var Item = sequelize.define('item', {
   },
   filepath: {
     type: Sequelize.STRING
+  },
+  votes: {
+    type: Sequelize.INTEGER,
+    defaultValue: 0
   }
 });
 

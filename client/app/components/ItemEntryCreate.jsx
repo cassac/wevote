@@ -3,7 +3,7 @@ import React from 'react';
 let ItemEntryCreate = (props) => (
   <div>
     <form onSubmit={props.submitHandler}>
-      <input name='text' type='text' placeholder='Write Something' />
+      <input name='text' type='text' placeholder='Write Something' required/>
       <br />
       <input name='image' type='file' />
       <br />
