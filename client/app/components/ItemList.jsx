@@ -3,7 +3,7 @@ import ItemEntry from './ItemEntry.jsx';
 let ItemList = (props) => (
   <div className='row'>
     {props.items.map((item) => (
-      <ItemEntry key={item.id} item={item} />
+      <ItemEntry key={item._id} item={item} />
       ))}
   </div>
 )
