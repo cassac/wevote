@@ -20,6 +20,7 @@
     "bootstrap": "^3.3.7",
     "express": "^4.14.0",
     "jquery": "^3.1.0",
+    "mongoose": "^4.5.10",
     "multiparty": "^4.1.2",
     "mysql": "^2.11.1",
     "react": "^15.3.1",
