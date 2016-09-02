@@ -21,7 +21,7 @@ class App extends Component {
   }
   updateVotes() {
     $.get('/votes', (votes) => {
-      this.setState({votes: votes.results})
+      this.setState({votes: votes.results});
     });
   }  
   componentDidMount() {
