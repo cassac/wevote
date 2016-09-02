@@ -2,17 +2,12 @@ var Item = require('../models/ItemModel.js');
 var fs = require('fs');
 var path = require('path');
 var multiparty = require('multiparty');
-var sequelize = require('../db/database.js');
 var util = require('../util/helpers.js');
 
 module.exports = {
   items: {
     get: ((req, res) => {
-      Item.findAll({
-        order: [
-          ['votes', 'DESC']
-        ]        
-      })
+      Item.find().sort({votes: 'desc'})
       .then((results) => {
         res.json({results: results})
       })
@@ -51,11 +46,12 @@ module.exports = {
         return results;
       })
       .then(function(results) {
-        Item.create({
+        const item = new Item({
           tag: results[2],
           text: results[0],
           filepath: results[1]
         })
+        item.save()
         .then(((results) => {
           res.json({results: results})
         }))
