@@ -17,7 +17,7 @@ let Modal = ({votes}) => (
 
         <tbody>
           {votes.map((vote) => (
-            <ModalTableRow key={vote.id} vote={vote} />
+            <ModalTableRow key={vote._id} vote={vote} />
           ))}    
         </tbody>
       </table>
