@@ -1,0 +1,1 @@
+Empty directory needed for user uploaded files
