@@ -1,5 +1,4 @@
 var express = require('express');
-var sequelize = require('./db/database.js');
 var router = require('./routes.js')
 
 var app = express();
