@@ -1,23 +1,10 @@
-var Sequelize = require('sequelize');
-var sequelize = require('../db/database.js');
+var mongoose = require('mongoose');
 
-var Item = sequelize.define('item', {
-  tag: {
-    type: Sequelize.STRING
-  },
-  text: {
-    type: Sequelize.STRING
-  },
-  filepath: {
-    type: Sequelize.STRING
-  },
-  votes: {
-    type: Sequelize.INTEGER,
-    defaultValue: 0
-  }
-});
+var itemSchema = mongoose.Schema({
+  tag: String,
+  text: String,
+  filepath: String,
+  votes: {type: Integer, default: 0}
+})
 
-// Item.sync({force: true}); // drops table data
-Item.sync(); // creates tables
-
-module.exports = Item;
+module.exports = mongoose.model('Item', itemSchema);

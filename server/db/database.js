@@ -1,19 +1,7 @@
-var Sequelize = require('sequelize');
-
-var sequelize = new Sequelize('wevote', 'root', 'root', {
-  host: 'localhost',
-  // dialect: 'mysql',
-  dialect: 'sqlite',
-
-  pool: {
-    max: 5,
-    min: 0,
-    idle: 10000
-  },
-
-  // sqlite only
-  storage: 'db.sqlite'
-
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/wevote');
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+  console.log('open!')
 });
-
-module.exports = sequelize;

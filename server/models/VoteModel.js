@@ -1,28 +1,12 @@
-var Sequelize = require('sequelize');
-var sequelize = require('../db/database.js');
+var mongoose = require('mongoose');
 
-var Vote = sequelize.define('vote', {
-  FromCountry: {
-    type: Sequelize.STRING
-  },
-  FromZip: {
-    type: Sequelize.STRING
-  },
-  FromState: {
-    type: Sequelize.STRING
-  },
-  FromCity: {
-    type: Sequelize.STRING
-  },
-  Body: {
-    type: Sequelize.STRING
-  },
-  From: {
-    type: Sequelize.STRING
-  }
-});
+var voteSchema = mongoose.Schema({
+  FromCountry: String,
+  FromZip: String,
+  FromState: String,
+  FromCity: String,
+  Body: String,
+  From: String
+})
 
-// Vote.sync({force:true}); // drops table data
-Vote.sync(); // creates table
-
-module.exports = Vote;
+module.exports = mongoose.model('Vote', voteSchema);
