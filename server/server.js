@@ -6,7 +6,7 @@ var router = require('./routes.js');
 var app = express();
 module.exports.app = app;
 
-app.use('/', router);
+app.use('/api', router);
 
 app.use(express.static('client'));
 app.use('/static/uploads', express.static('static/uploads'));
