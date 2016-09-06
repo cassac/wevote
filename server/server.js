@@ -17,6 +17,6 @@ app.get('*', (req, res) => {
 
 var port = process.env.PORT || 8080;
 
-app.listen(port, function() {
+app.listen(port, () => {
   console.log('WeVote is running on port:', port);
 })
