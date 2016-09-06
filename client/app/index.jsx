@@ -1,9 +1,13 @@
-import React, {Component} from 'react';
-import ReactDOM from 'react-dom';
+import React, { Component} from 'react';
+import { Router, Route, Link, browserHistory } from 'react-router'
+import { render } from 'react-dom';
 import ItemList from './components/ItemList.jsx';
 import ItemEntryCreate from './components/ItemEntryCreate.jsx';
 import NavBar from './components/NavBar.jsx';
 import Modal from './components/Modal.jsx';
+import UsersPage from './components/UsersPage.jsx';
+import UserPage from './components/UserPage.jsx';
+import NoMatchPage from './components/NoMatchPage.jsx';
 
 class App extends Component {
   constructor(props) {
@@ -69,4 +73,14 @@ class App extends Component {
   }
 }
 
-ReactDOM.render(<App/>, document.getElementById('app'))
+render(
+  <Router history={browserHistory}>
+    <Route path="/" component={App}>
+      <Route path="users" component={UsersPage}>
+        <Route path="/user/:userId" component={UserPage}/>
+      </Route>
+      <Route path="*" component={NoMatchPage}/>
+    </Route>
+  </Router>, 
+  document.getElementById('app')
+)
